@@ -1,0 +1,153 @@
+{
+  "dataset": {
+    "name": "synthetic_students.csv",
+    "rows": 900,
+    "train_test_split": "80/20",
+    "random_state": 42
+  },
+  "skill_classifier": {
+    "accuracy": 0.7777777777777778,
+    "precision_macro": 0.7543755401901469,
+    "recall_macro": 0.7324475630414125,
+    "f1_macro": 0.7386793920962579,
+    "per_class": {
+      "Advanced": {
+        "precision": 0.5576923076923077,
+        "recall": 0.7073170731707317,
+        "f1": 0.6236559139784946,
+        "support": 41
+      },
+      "Beginner": {
+        "precision": 0.8461538461538461,
+        "recall": 0.7857142857142857,
+        "f1": 0.8148148148148148,
+        "support": 14
+      },
+      "Expert": {
+        "precision": 0.9213483146067416,
+        "recall": 0.8913043478260869,
+        "f1": 0.9060773480662984,
+        "support": 92
+      },
+      "Intermediate": {
+        "precision": 0.6923076923076923,
+        "recall": 0.5454545454545454,
+        "f1": 0.6101694915254238,
+        "support": 33
+      }
+    },
+    "feature_importance": [
+      {
+        "feature": "CGPA",
+        "importance": 0.34703
+      },
+      {
+        "feature": "LeetCode_Problems_Solved",
+        "importance": 0.19609
+      },
+      {
+        "feature": "academic_score",
+        "importance": 0.144347
+      },
+      {
+        "feature": "certificate_score",
+        "importance": 0.085853
+      },
+      {
+        "feature": "Projects_Done",
+        "importance": 0.0764
+      },
+      {
+        "feature": "Number_of_Certifications",
+        "importance": 0.073067
+      },
+      {
+        "feature": "Hackathons_Participated",
+        "importance": 0.038952
+      },
+      {
+        "feature": "Research_Papers_Published",
+        "importance": 0.03826
+      }
+    ]
+  },
+  "skill_index_regressor": {
+    "r2": 0.8223117286073333,
+    "mae": 5.76591434247053,
+    "rmse": 7.727053275810159,
+    "feature_importance": [
+      {
+        "feature": "CGPA",
+        "importance": 0.852064
+      },
+      {
+        "feature": "LeetCode_Problems_Solved",
+        "importance": 0.039233
+      },
+      {
+        "feature": "CodeChef_Rating",
+        "importance": 0.02781
+      },
+      {
+        "feature": "Projects_Done",
+        "importance": 0.017501
+      },
+      {
+        "feature": "Number_of_Certifications",
+        "importance": 0.014613
+      },
+      {
+        "feature": "Weekly_Aptitude_Avg",
+        "importance": 0.013868
+      },
+      {
+        "feature": "Avg_Communication_Score",
+        "importance": 0.010241
+      },
+      {
+        "feature": "certificate_score",
+        "importance": 0.00914
+      },
+      {
+        "feature": "academic_score",
+        "importance": 0.007506
+      },
+      {
+        "feature": "Hackathons_Participated",
+        "importance": 0.005162
+      },
+      {
+        "feature": "Research_Papers_Published",
+        "importance": 0.002861
+      }
+    ]
+  },
+  "scheme_recommender": {
+    "accuracy": 0.8722222222222222,
+    "roc_auc": 0.894736842105263,
+    "precision": 0.9166666666666666,
+    "recall": 0.9097744360902256,
+    "feature_importance": [
+      {
+        "feature": "final_skill_index",
+        "importance": 0.457569
+      },
+      {
+        "feature": "CGPA",
+        "importance": 0.283709
+      },
+      {
+        "feature": "Number_of_Certifications",
+        "importance": 0.149706
+      },
+      {
+        "feature": "Projects_Done",
+        "importance": 0.064882
+      },
+      {
+        "feature": "Hackathons_Participated",
+        "importance": 0.044134
+      }
+    ]
+  }
+}

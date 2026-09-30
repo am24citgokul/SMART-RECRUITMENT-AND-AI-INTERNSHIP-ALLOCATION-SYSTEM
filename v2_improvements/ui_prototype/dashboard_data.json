@@ -1,0 +1,116 @@
+{
+  "student": {
+    "name": "Synthetic Student 1",
+    "features": {
+      "CGPA": 7.75,
+      "Hackathons_Participated": 5.0,
+      "Research_Papers_Published": 2.0,
+      "Projects_Done": 4.0,
+      "Number_of_Certifications": 5.0,
+      "certificate_score": 65.1,
+      "academic_score": 95.5,
+      "final_skill_index": 95.83,
+      "LeetCode_Problems_Solved": 490.0
+    },
+    "radar": [
+      {
+        "feature": "CGPA",
+        "raw": 7.75,
+        "min": 5.0,
+        "max": 10.0,
+        "scaled": 55.0
+      },
+      {
+        "feature": "Hackathons_Participated",
+        "raw": 5.0,
+        "min": 0.0,
+        "max": 11.0,
+        "scaled": 45.45
+      },
+      {
+        "feature": "Research_Papers_Published",
+        "raw": 2.0,
+        "min": 0.0,
+        "max": 5.0,
+        "scaled": 40.0
+      },
+      {
+        "feature": "Projects_Done",
+        "raw": 4.0,
+        "min": 0.0,
+        "max": 12.0,
+        "scaled": 33.33
+      },
+      {
+        "feature": "Number_of_Certifications",
+        "raw": 5.0,
+        "min": 0.0,
+        "max": 25.0,
+        "scaled": 20.0
+      },
+      {
+        "feature": "certificate_score",
+        "raw": 65.1,
+        "min": 34.0,
+        "max": 100.0,
+        "scaled": 47.12
+      },
+      {
+        "feature": "academic_score",
+        "raw": 95.5,
+        "min": 74.6,
+        "max": 100.0,
+        "scaled": 82.28
+      },
+      {
+        "feature": "final_skill_index",
+        "raw": 95.83,
+        "min": 21.17,
+        "max": 100.0,
+        "scaled": 94.71
+      },
+      {
+        "feature": "LeetCode_Problems_Solved",
+        "raw": 490.0,
+        "min": 0.0,
+        "max": 1352.0,
+        "scaled": 36.24
+      }
+    ],
+    "skill_index": 91.05,
+    "skill_level": "Expert",
+    "explanation": "The strongest model signals for this estimate are CGPA, LeetCode Problems Solved, CodeChef Rating. Their influence is based on this model's learned feature importance, not a causal claim.",
+    "top_features": [
+      "CGPA",
+      "LeetCode_Problems_Solved",
+      "CodeChef_Rating"
+    ]
+  },
+  "match": {
+    "role": "Junior Data Analyst",
+    "requirements": [
+      "CGPA",
+      "Projects_Done",
+      "LeetCode_Problems_Solved"
+    ],
+    "explanation": "This synthetic candidate qualifies for the Junior Data Analyst profile based on prerequisite domain skills and benchmark alignment."
+  },
+  "timeline": [
+    {
+      "label": "Now",
+      "value": 83.05
+    },
+    {
+      "label": "+2 certifications",
+      "value": 87.05
+    },
+    {
+      "label": "+1 project",
+      "value": 92.05
+    },
+    {
+      "label": "+1 project & practice",
+      "value": 97.05
+    }
+  ]
+}

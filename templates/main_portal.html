@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SMART STUDENT MONITORING SYSTEM</title>
+
+    <!-- Import the same style -->
+    <link rel="stylesheet" href="static/style.css">
+
+    <style>
+        body {
+            font-family: "Inter", Arial, sans-serif;
+            background: linear-gradient(135deg, #e8eff8, #f9fbfd);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .main-container {
+            text-align: center;
+            background: white;
+            padding: 40px 50px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            animation: fadeIn 0.4s ease;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 34px;
+            color: #2d3748;
+        }
+
+        h3 {
+            margin-bottom: 25px;
+            color: #4a5568;
+        }
+
+        .portal-btn {
+            background: #2b6cb0;
+            color: white;
+            padding: 14px 25px;
+            display: block;
+            width: 280px;
+            margin: 20px auto;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: 0.25s ease;
+        }
+
+        .portal-btn:hover {
+            background: #245a99;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Icons */
+        .portal-btn span {
+            margin-right: 8px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="main-container">
+
+    <h1>AI Internship Allocation System</h1>
+    <h3>Choose Your Portal</h3>
+
+    <a class="portal-btn" href="http://127.0.0.1:5001" target="_blank">
+        <span>🛠</span> Admin Portal
+    </a>
+
+    <a class="portal-btn" href="http://127.0.0.1:5002" target="_blank">
+        <span>🎓</span> Student Portal
+    </a>
+
+    <a class="portal-btn" href="http://127.0.0.1:5003" target="_blank">
+        <span>🏢</span> Company Portal
+    </a>
+
+</div>
+
+</body>
+</html>

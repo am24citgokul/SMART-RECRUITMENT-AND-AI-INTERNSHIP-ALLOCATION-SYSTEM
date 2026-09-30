@@ -1,0 +1,11 @@
+SMART RECRUITMENT ML TRAINING SUMMARY
+============================================================
+Best Selected Model:      XGBoost (Tuned)
+Test R2 Score:            0.8511
+Test MAE:                 5.2684
+Test RMSE:                7.0743
+5-Fold CV R2:             0.8853 +/- 0.0125
+5-Fold CV MAE:            4.6447
+5-Fold CV RMSE:           6.0912
+Training R2:              0.9422
+Generalization Check:     Overfitting check passed (Test R2 0.8511)

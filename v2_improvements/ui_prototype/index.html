@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>V2 Skill Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">SYNTHETIC DATA · V2 PROTOTYPE</p>
+    <header>
+      <div>
+        <h1>Student skill dashboard</h1>
+        <p id="student-name">Loading computed pipeline output…</p>
+      </div>
+      <div class="score">
+        <strong id="skill-index">—</strong>
+        <span>Final skill index</span>
+        <b id="skill-level">—</b>
+      </div>
+    </header>
+    <section class="grid">
+      <article>
+        <h2>Core profile</h2>
+        <canvas id="radar"></canvas>
+        <p class="muted">Chart shows this student's values relative to typical dataset ranges, not feature importance. See 'Why this estimate' for importance ranking.</p>
+      </article>
+      <article>
+        <h2>Why this estimate</h2>
+        <p id="explanation"></p>
+        <ol id="features"></ol>
+        <p class="muted">Feature influence is associative, not causal.</p>
+      </article>
+      <article>
+        <h2>Recruiter match</h2>
+        <p id="match"></p>
+        <p class="muted">Matched against this role's required skills, which may differ from the student's overall top drivers:</p>
+        <div id="requirements" class="chips"></div>
+      </article>
+      <article>
+        <h2>Potential progress</h2>
+        <canvas id="timeline"></canvas>
+      </article>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
+

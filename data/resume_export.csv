@@ -1,0 +1,6 @@
+register_number,student_name,department,resume_file_name,resume_link,saved_at
+CIT22CS001,Aarav Krishnan,CSE (AI & ML),CIT22CS001_generated_resume.pdf,http://127.0.0.1:5001/resumes/view/CIT22CS001_generated_resume.pdf,2026-09-25 09:23:48
+CIT22CS008,Riya Prasad,CSE (AI & ML),CIT22CS008_generated_resume.pdf,http://127.0.0.1:5001/resumes/view/CIT22CS008_generated_resume.pdf,2026-09-25 09:23:48
+CIT22CS008,Riya Prasad,CSE (AI & ML),CIT22CS008_resume_CIT22CS008_generated_resume_1.pdf,http://127.0.0.1:5001/resumes/view/CIT22CS008_resume_CIT22CS008_generated_resume_1.pdf,2026-09-25 09:23:48
+CIT22CS010,Nisha Thomas,CSE (AI & ML),CIT22CS010_generated_resume.pdf,http://127.0.0.1:5001/resumes/view/CIT22CS010_generated_resume.pdf,2026-09-25 09:23:48
+CIT22CS010,Nisha Thomas,CSE (AI & ML),CIT22CS010_resume_CIT22CS010_generated_resume.pdf,http://127.0.0.1:5001/resumes/view/CIT22CS010_resume_CIT22CS010_generated_resume.pdf,2026-09-25 09:23:48

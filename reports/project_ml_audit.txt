@@ -1,0 +1,150 @@
+================================================================================
+PROJECT MACHINE LEARNING AUDIT REPORT
+Project: Smart Recruitment and AI Internship Allocation System
+ML Objective: Predict Student Skill Index Score (SIS) using ML (XGBoost Regressor focus)
+Audit Date: 2026-09-29
+Environment: Python 3.14, scikit-learn 1.8.0, xgboost 3.4.1, pandas, numpy
+================================================================================
+
+1. ALL DATASETS FOUND & SIZES:
+--------------------------------------------------------------------------------
+* [Production Student Records] data/master_students.csv
+   - Rows: 10, Columns: 65
+   - Duplicate Rows: 0
+   - Total Missing Values: 48
+* [Recycle Bin / Archived Students] data/recycle_bin.csv
+   - Rows: 31, Columns: 68
+   - Duplicate Rows: 0
+   - Total Missing Values: 376
+* [Student Aptitude Records] data/tests/aptitude_0_master_students (11).csv
+   - Rows: 10, Columns: 60
+   - Duplicate Rows: 0
+   - Total Missing Values: 49
+* [Aptitude Question Bank] data/tests/aptitude_0_aptitude_200final.csv
+   - Rows: 200, Columns: 8
+   - Duplicate Rows: 89
+   - Total Missing Values: 1
+* [Reference Exam Dataset] data/tests/domain_0_newstudent.csv
+   - Rows: 1000, Columns: 8
+   - Duplicate Rows: 0
+   - Total Missing Values: 0
+* [Reference Retail Dataset] data/tests/domain_0_shopping_behavior_updated.csv
+   - Rows: 3900, Columns: 18
+   - Duplicate Rows: 0
+   - Total Missing Values: 0
+* [Uploaded Certificates Log] data/certificates.csv
+   - Rows: 25, Columns: 10
+   - Duplicate Rows: 0
+   - Total Missing Values: 9
+* [Company Drive Postings] data/company_drives.csv
+   - Rows: 2, Columns: 14
+   - Duplicate Rows: 0
+   - Total Missing Values: 0
+* [Government/Industry Schemes] data/schemes_final_expanded.csv
+   - Rows: 30, Columns: 9
+   - Duplicate Rows: 0
+   - Total Missing Values: 0
+* [Drive Test Results] data/test_results.csv
+   - Rows: 1, Columns: 12
+   - Duplicate Rows: 0
+   - Total Missing Values: 0
+* [Resume Exports Log] data/resume_export.csv
+   - Rows: 5, Columns: 6
+   - Duplicate Rows: 0
+   - Total Missing Values: 0
+* [V2 Benchmark Student Dataset] v2_improvements/data/synthetic_students.csv
+   - Rows: 900, Columns: 69
+   - Duplicate Rows: 0
+   - Total Missing Values: 34200
+
+2. ALL ML-RELATED FILES FOUND:
+--------------------------------------------------------------------------------
+Model Files (.pkl, .joblib):
+   - model/best_model.pkl (1,157,425 bytes)
+       Class: RandomForestClassifier
+       Classes: [0 1 2]
+       Fitted Features (9): ['CGPA', 'hackathons', 'research_papers', 'projects', 'internships', 'certificate_count', 'certificate_score', 'academic_score', 'final_skill_index']
+   - model/label_encoder.pkl (565 bytes)
+       Class: LabelEncoder
+       Classes: ['Advanced' 'Expert' 'Intermediate']
+   - model/skill_index_model_xgb.pkl (7,763,034 bytes)
+       Class: XGBRegressor
+   - model/skill_index_scaler.pkl (1,223 bytes)
+       Class: RobustScaler
+       Fitted Features (12): ['CGPA', 'Projects_Done', 'Research_Papers_Published', 'Review_Papers_Published', 'Patents_Granted', 'Hackathons_Participated', 'Hackathons_Won_Top100', 'Weekly_Aptitude_Avg', 'Avg_Communication_Score', 'Number_of_Certifications', 'LeetCode_Problems_Solved', 'CodeChef_Rating']
+   - model/scheme_predictor_v2_rf.pkl (652,383 bytes)
+       Load Status: Failed (module 'sklearn.compose._column_transformer' has no attribute '_RemainderColsList')
+   - v2_improvements/models/skill_index_regressor.joblib (4,662,651 bytes)
+       Class: dict
+   - v2_improvements/models/skill_classifier.joblib (4,510,961 bytes)
+       Class: dict
+   - v2_improvements/models/scheme_recommender.joblib (2,134,713 bytes)
+       Class: dict
+
+Training Scripts:
+   - v2_improvements/src/train_skill_index_regressor.py (Trains RandomForestRegressor on synthetic_students.csv)
+   - v2_improvements/src/train_skill_classifier.py (Trains RandomForestClassifier for 4-class skill level)
+   - v2_improvements/src/train_scheme_recommender.py (Trains RandomForestClassifier for scheme eligibility)
+   - v2_improvements/src/generate_synthetic_data.py (Generates 900 synthetic students)
+   - v2_improvements/src/run_all.py (Orchestrates end-to-end V2 pipeline)
+
+Prediction / Evaluation Scripts:
+   - utils.py (Contains compute_skill_index_for_row; attempts MODEL.predict_proba)
+   - scheme_recommender.py (Rule-based and model-based internship scheme recommendation)
+   - v2_improvements/src/evaluate.py (Calculates R2, MAE, RMSE, Confusion Matrix, ROC-AUC)
+   - v2_improvements/src/explainability.py (Computes permutation importance and decision explanations)
+   - v2_improvements/tests/test_pipeline.py (Pytest suite testing feature preparation & model evaluations)
+
+Existing Evaluation Reports:
+   - v2_improvements/reports/evaluation_report.md (Held-out 80/20 test results for V2 synthetic data)
+   - v2_improvements/reports/metrics.json (JSON report containing V2 evaluation metrics)
+
+3. TARGET COLUMN, FEATURES & PREPROCESSING STATUS:
+--------------------------------------------------------------------------------
+Target Column:
+   - skill_index (Continuous numerical target for regression)
+   - In production dataset (data/master_students.csv): 10 rows, ALL ZERO (0.0). Variance = 0.0.
+   - In V2 dataset (v2_improvements/data/synthetic_students.csv): 900 rows, continuous (20.05 - 100.0).
+   - Secondary Classification Targets in project: skill_level (4 classes: Beginner, Intermediate, Advanced, Expert); scheme_eligible (binary: 0/1).
+
+Feature Columns in Master Schema:
+   - Academic: CGPA, Projects_Done, Research_Papers_Published, Review_Papers_Published, Patents_Granted
+   - Extracurricular: Hackathons_Participated, Hackathons_Won_Top100
+   - Assessment / Coding: Weekly_Aptitude_Avg, Avg_Communication_Score, Number_of_Certifications, LeetCode_Problems_Solved, CodeChef_Rating
+   - Semester Academics: Sem1 to Sem6 GPA, IA1/IA2/Model marks (mostly empty/unpopulated in practice)
+   - Categorical: Foreign_Language_Known, Certificate_Course_Level, Certificate_Platform, Certificate_Domain
+
+Preprocessing, Encoding & Scaling:
+   - In model/skill_index_scaler.pkl: RobustScaler fitted on 12 numeric features.
+   - In v2_improvements/src/preprocessing.py: Numeric imputation using median, fillna(0.0).
+   - Missing categorical one-hot/ordinal encoding in production pipeline.
+
+4. MODEL TRAINING STATUS & VALIDITY OF EXISTING best_model.pkl:
+--------------------------------------------------------------------------------
+   - model/best_model.pkl is NOT a regressor. It is a RandomForestClassifier with 3 classes.
+   - Feature mismatch: fitted on 9 columns: [CGPA, hackathons, research_papers, projects, internships, certificate_count, certificate_score, academic_score, final_skill_index].
+   - Runtime Failure: utils.py passes 4 features [academic_score, certificate_score, certificate_count, hackathons]. This raises ValueError during prediction!
+   - The exception is swallowed by a try/except block in utils.py, which returns 0.0 for every student!
+   - Therefore, the existing best_model.pkl is completely INVALID and BROKEN for the current dataset and inference code.
+   - model/skill_index_model_xgb.pkl is a trained XGBRegressor on 12 scaled features, but it was orphaned and not connected to inference.
+
+5. DATA LEAKAGE AUDIT:
+--------------------------------------------------------------------------------
+   - SUSPICIOUS TARGET LEAKAGE 1: In model/best_model.pkl, final_skill_index was passed as an input feature to predict skill level!
+   - SUSPICIOUS TARGET LEAKAGE 2: In v2_improvements/data/synthetic_students.csv, final_skill_index has a 0.9765 correlation with skill_index. It must NEVER be used as an input feature.
+   - SUSPICIOUS TARGET LEAKAGE 3: skill_level and scheme_eligible are downstream derived targets from skill_index and must NOT be used as input features for SIS regression.
+
+6. DUPLICATES, MISSING VALUES & DATA QUALITY:
+--------------------------------------------------------------------------------
+   - data/master_students.csv: 10 rows, 0 duplicate rows, 48 missing values (primarily in optional semester subjects and certificate fields).
+   - data/recycle_bin.csv: 31 rows, 0 duplicates, 376 missing values.
+   - data/tests/aptitude_0_aptitude_200final.csv: 200 rows, 89 duplicate rows (question bank repetitions).
+   - v2_improvements/data/synthetic_students.csv: 900 rows, 0 duplicates, 34,200 missing values (semester subject string arrays left blank).
+
+7. CURRENT ML STATUS:
+--------------------------------------------------------------------------------
+   - Production Pipeline: BROKEN. Skill Index defaults to 0.0 due to feature mismatch in utils.py.
+   - Production Institutional Data: ONLY 10 SAMPLES with ZERO target variance. Real institutional data cannot be used to train/evaluate a reliable ML regression model.
+   - Existing Model Files: best_model.pkl is a mismatched classifier; skill_index_model_xgb.pkl is unintegrated; scheme_predictor_v2_rf.pkl fails unpickling.
+   - Benchmark Dataset: v2_improvements/data/synthetic_students.csv contains 900 samples with genuine target variance for the SIS regression task.
+   - Evaluation Gap: No unified multi-model benchmark (Linear, Ridge, Decision Tree, Random Forest, Gradient Boosting, XGBoost, Extra Trees) with cross-validation and systematic hyperparameter tuning previously existed.

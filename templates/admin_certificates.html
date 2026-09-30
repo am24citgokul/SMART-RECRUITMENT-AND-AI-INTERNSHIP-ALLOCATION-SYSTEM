@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="max-width:1200px; margin:40px auto; padding:30px;">
+    <h2 style="font-size:2rem; font-weight:800; margin-bottom:20px;">
+        📄 Pending Certificate Approvals
+    </h2>
+
+    {% if certs %}
+        <table border="1" cellpadding="12" cellspacing="0" width="100%">
+            <tr style="background:#f9f9f9;">
+                <th>Student</th>
+                <th>Certificate</th>
+                <th>View</th>
+                <th>Action</th>
+            </tr>
+
+            
+            {% for c in certs %}
+            <tr>
+                <td>
+                    {{ c.student_name }}<br>
+                    <small>{{ c.register_number }}</small>
+                </td>
+                <td>{{ c.certificate_name }}</td>
+<td>
+  {% if c.file_path %}
+    <a href="{{ url_for('view_certificate_file', filename=c.file_path) }}"
+       target="_blank">
+       📎 View / Download
+    </a>
+  {% else %}
+    <span style="color:red;">No file uploaded</span>
+  {% endif %}
+</td>
+
+
+
+                <td>
+                    <form method="POST"
+                          action="{{ url_for('review_certificate', cert_id=c.certificate_id) }}">
+                        <input type="text" name="remarks"
+                               placeholder="Remarks"
+                               required>
+
+                        <br><br>
+                        <button name="action" value="approve">✅ Approve</button>
+                        <button name="action" value="reject">❌ Reject</button>
+                    </form>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+    {% else %}
+        <p>No pending certificates 🎉</p>
+    {% endif %}
+</div>
+
+{% endblock %}

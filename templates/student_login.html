@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Login</title>
+    <style>
+        body { font-family: Arial; background: #f2f2f2; }
+        .box {
+            width: 380px; margin: 120px auto; background: white;
+            padding: 25px; border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input {
+            width: 100%; padding: 10px; margin: 8px 0;
+            border-radius: 5px; border: 1px solid #ccc;
+        }
+        
+        button {
+            background: #2b6cb0; color: white; padding: 10px;
+            width: 100%; border: none; border-radius: 5px;
+        }
+        button:hover { background: #234e8c; }
+        .info {
+            font-size: 13px;
+            color: #444;
+            background: #e8f0fe;
+            padding: 8px;
+            border-left: 4px solid #2b6cb0;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Student Login</h2>
+
+    <form method="post">
+        <input type="text" name="register_number" placeholder="Register Number" required>
+
+        <input type="password" name="password" placeholder="Password" required>
+
+        <!-- ⭐ DEFAULT PASSWORD INFO BOX -->
+        <div class="info">
+            <b>Default Password:</b> <span style="color:#2b6cb0;">helloeveryone</span><br>
+            (Use this only for first login)
+        </div>
+
+        <br>
+
+        <button>Login</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <p style="color:red;">{{ messages[0] }}</p>
+      {% endif %}
+    {% endwith %}
+</div>
+
+</body>
+</html>

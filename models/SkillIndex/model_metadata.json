@@ -1,0 +1,58 @@
+{
+    "model_name": "XGBoost (Tuned)",
+    "target_column": "skill_index",
+    "feature_columns": [
+        "CGPA",
+        "Projects_Done",
+        "Research_Papers_Published",
+        "Review_Papers_Published",
+        "Patents_Granted",
+        "Hackathons_Participated",
+        "Hackathons_Won_Top100",
+        "Weekly_Aptitude_Avg",
+        "Avg_Communication_Score",
+        "Number_of_Certifications",
+        "LeetCode_Problems_Solved",
+        "CodeChef_Rating",
+        "academic_score",
+        "certificate_score",
+        "Foreign_Language_Known_German",
+        "Foreign_Language_Known_Japanese",
+        "Foreign_Language_Known_Spanish",
+        "Certificate_Course_Level_Beginner",
+        "Certificate_Course_Level_Intermediate",
+        "Certificate_Platform_Udemy",
+        "Certificate_Platform_edX",
+        "Certificate_Domain_Cloud",
+        "Certificate_Domain_Programming"
+    ],
+    "preprocessing_method": "Median numeric imputation, one-hot encoding for categoricals, dropped student identifiers & target leaks",
+    "training_date": "2026-09-29",
+    "random_seed": 42,
+    "test_size": 0.2,
+    "cv_method": "KFold",
+    "cv_folds": 5,
+    "test_metrics": {
+        "R2": 0.8511,
+        "Adjusted_R2": 0.8291,
+        "MAE": 5.2684,
+        "MSE": 50.0457,
+        "RMSE": 7.0743
+    },
+    "cv_metrics": {
+        "CV_R2_Mean": 0.8853,
+        "CV_R2_Std": 0.0125,
+        "CV_MAE_Mean": 4.6447,
+        "CV_RMSE_Mean": 6.0912
+    },
+    "best_hyperparameters": {
+        "subsample": 0.6,
+        "reg_lambda": 0.5,
+        "reg_alpha": 2.0,
+        "n_estimators": 350,
+        "min_child_weight": 5,
+        "max_depth": 3,
+        "learning_rate": 0.02,
+        "colsample_bytree": 0.9
+    }
+}

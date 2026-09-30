@@ -1,0 +1,15 @@
+================================================================================
+OVERFITTING ANALYSIS REPORT
+Selected Best Model: XGBoost (Tuned)
+================================================================================
+
+Training R2:                 0.9422
+Cross-Validation R2 Mean:    0.8853 (std: 0.0125)
+Held-Out Test R2:            0.8511
+Train-to-Test R2 Gap:        0.0911
+CV-to-Test R2 Gap:           0.0342
+
+ASSESSMENT: Excellent generalization. Minimal gap between train and test.
+
+Conclusion: The model retains an R2 of 0.8511 on completely unseen test data,
+closely tracking its 5-fold CV score of 0.8853.
